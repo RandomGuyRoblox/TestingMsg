@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Center Message with Size Control</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #message {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .controls button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .controls button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="message">Hello, this is a centered message!</div>
+  <div class="controls">
+    <button onclick="changeSize(4)">A+</button>
+    <button onclick="changeSize(-4)">A-</button>
+    <button onclick="resetSize()">Reset</button>
+  </div>
+
+  <script>
+    const message = document.getElementById("message");
+    let currentSize = 32;
+
+    function changeSize(delta) {
+      currentSize += delta;
+      message.style.fontSize = currentSize + "px";
+    }
+
+    function resetSize() {
+      currentSize = 32;
+      message.style.fontSize = currentSize + "px";
+    }
+  </script>
+</body>
+</html>
