@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Message</title>
+  <title>Message Prompt</title>
   <style>
     body {
       margin: 0;
@@ -12,55 +12,66 @@
       color: #fff;
       font-family: Arial, sans-serif;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
 
     #message {
-      font-size: 32px;
+      font-size: 28px;
       text-align: center;
       margin-bottom: 20px;
     }
 
-    .controls button {
+    .button-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .button-group button {
       padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
+      font-size: 16px;
       background: #333;
       color: white;
-      font-size: 16px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
       transition: background 0.2s;
     }
 
-    .controls button:hover {
+    .button-group button:hover {
       background: #555;
+    }
+
+    #secondMessage {
+      display: none;
+      font-size: 32px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div id="message">Hello, this is a centered message!</div>
-  <div class="controls">
-    <button onclick="changeSize(4)">A+</button>
-    <button onclick="changeSize(-4)">A-</button>
-    <button onclick="resetSize()">Reset</button>
+
+  <div id="content"> שלום! כאן מערכת האבטחה של Windows לאחרונה שמנו לב שהמחשב שלך שולח בקשות אוטמטיות לפתיחה של ערוצים כמו "מני ממטרה, יובל המבולבל" ועוד..
+    <div id="message">שלום! כאן המערכת האבטחה של המכשיר שלך, שמנו לב לאחרונה שהמחשב שלך שולח בקשות אוטומטיות לפתיחה של ערוצי יוטיוב כגון יובל המבולבל, מני ממטרה ועוד.. תרצה טיפים לאיך לטפל בזה? </div>
+    <div class="button-group">
+      <button onclick="showSecondMessage()">כן</button>
+      <button onclick="hideEverything()">לא</button>
+    </div>
   </div>
 
-  <script>
-    const message = document.getElementById("message");
-    let currentSize = 32;
+  <div id="secondMessage">שלום! שמנו לב שהחלטת לבחור בטיפים שלנו! אנחנו מעוד שמחים שבחרת בנו ויאללה בוא נתחיל במסע שלנו ביחד, לראשונה אנחנו נשמח שאתה תחליף סיסמה לאיימל שלך, ותקליד לאט לאט כדי שהמערכת תוכל לטעון עוד טיפים לעזרה.</div>
 
-    function changeSize(delta) {
-      currentSize += delta;
-      message.style.fontSize = currentSize + "px";
+  <script>
+    function showSecondMessage() {
+      document.getElementById("content").style.display = "none";
+      document.getElementById("secondMessage").style.display = "block";
     }
 
-    function resetSize() {
-      currentSize = 32;
-      message.style.fontSize = currentSize + "px";
+    function hideEverything() {
+      document.body.innerHTML = ""; // Remove all content, keep background
     }
   </script>
+
 </body>
 </html>
